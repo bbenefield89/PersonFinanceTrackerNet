@@ -1,0 +1,9 @@
+.nav-links-slide-out-menu {
+    top: 62px;
+    right: -160px;
+    transition: right 0.75s;
+}
+
+.nav-links-slide-out-menu.show {
+    right: 0;
+}

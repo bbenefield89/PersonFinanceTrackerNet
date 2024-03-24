@@ -1,0 +1,38 @@
+<nav class="bg-gray-900 text-white p-4 relative">
+    <div class="container mx-auto flex justify-between items-center">
+        <!-- Logo -->
+        <a href="#" class="text-xl font-bold">Personal Finance Tracker</a>
+
+        <!-- Hamburger Menu -->
+        <div class="block relative top-1 lg:hidden">
+            <button id="menu-toggle" class="text-white focus:outline-none" (click)="toggleNavLinks()">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M0 6h16M0 12h16M0 18h16"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Slide-out menu (visible on mobile screen) -->
+        <div class="nav-links-slide-out-menu absolute bg-gray-900 w-40 {{ showMobileNavLinks }} text-center lg:hidden">
+            <ul class="flex flex-col p-4 space-y-10">
+                <li *ngFor="let linkData of navLinksData">
+                    <a href="{{ linkData.href }}" class="hover:text-gray-300">
+                        {{ linkData.text }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Navbar links (visible on large screens) -->
+        <ul class="hidden lg:flex space-x-4">
+            <li *ngFor="let linkData of navLinksData">
+                <a href="{{ linkData.href }}"
+                   class="hover:text-gray-300">
+                    {{ linkData.text }}
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

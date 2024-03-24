@@ -1,8 +1,13 @@
 <!-- app.component.html -->
-<div class="min-h-screen flex flex-col bg-white dark:bg-gray-800 text-gray-900 dark:text-white p-6">
-  <router-outlet></router-outlet>
+<div class="min-h-screen flex flex-col bg-white dark:bg-gray-800 text-gray-900 dark:text-white overflow-x-hidden">
+    <!-- Navbar -->
+    <app-nav-bar></app-nav-bar>
 
-  <footer class="py-6 text-center">
-    <p class="text-sm text-gray-400">© {{ currYear }} Personal Finance Tracker. All rights reserved.</p>
-  </footer>
+    <!-- Main content -->
+    <router-outlet></router-outlet>
+
+    <!-- Footer -->
+    <footer class="py-6 text-center">
+        <p class="text-sm text-gray-400">© {{ currYear }} Personal Finance Tracker. All rights reserved.</p>
+    </footer>
 </div>
