@@ -15,7 +15,7 @@ namespace PersonalFinanceTracker.Server
             builder.Services.AddControllers();
 
             // Register Services
-            builder.Services.AddScoped<ITransactionsService>();
+            builder.Services.AddScoped<ITransactionsService, TransactionsService>();
 
             // Register Contexts
             builder.Services.AddDbContext<InMemDbContext>(opts =>
