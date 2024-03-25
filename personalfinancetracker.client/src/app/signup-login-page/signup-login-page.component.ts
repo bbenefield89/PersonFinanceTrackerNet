@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-login-page',
@@ -6,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './signup-login-page.component.css'
 })
 export class SignupLoginPageComponent {
-    public showLoginForm = false;
+    public showSignupForm = true;
 
     toggleForms() {
-        this.showLoginForm = !this.showLoginForm
+        this.showSignupForm = !this.showSignupForm
     }
 }
