@@ -18,6 +18,10 @@ export class SignupFormComponent {
         })
     }
 
+    submitSignupForm() {
+        console.log(this.signupForm.value);
+    }
+
     handleLoginButtonClick() {
         this.toggleForms.emit()
     }

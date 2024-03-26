@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { LandingPageComponent } from './landing-page/landing-page.component';
-import { SignupLoginPageComponent } from './signup-login-page/signup-login-page.component';
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { LandingPageComponent } from './views/landing-page/landing-page.component';
+import { SignupLoginPageComponent } from './views/signup-login-page/signup-login-page.component';
+import { NavBarComponent } from './globals/nav-bar/nav-bar.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
