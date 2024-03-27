@@ -11,6 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SignupFormComponent } from './authentication/components/signup-form/signup-form.component';
 import { LoginFormComponent } from './authentication/components/login-form/login-form.component';
 import { DashboardPageComponent } from './views/dashboard-page/dashboard-page.component';
+import { ErrorToastComponent } from './globals/toasts/error-toast/error-toast.component';
 
 @NgModule({
     declarations: [
@@ -21,6 +22,7 @@ import { DashboardPageComponent } from './views/dashboard-page/dashboard-page.co
         SignupFormComponent,
         LoginFormComponent,
         DashboardPageComponent,
+        ErrorToastComponent,
     ],
     imports: [
         BrowserModule, HttpClientModule,

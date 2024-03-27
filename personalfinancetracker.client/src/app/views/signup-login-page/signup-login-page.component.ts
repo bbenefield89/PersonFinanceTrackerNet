@@ -7,9 +7,14 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrl: './signup-login-page.component.css'
 })
 export class SignupLoginPageComponent {
-    public showSignupForm = true;
+    public showSignupForm = true
+    public showErrorToast = false
 
-    toggleForms() {
+    public toggleForms() {
         this.showSignupForm = !this.showSignupForm
+    }
+
+    public toggleShowErrorToast() {
+        this.showErrorToast = !this.showErrorToast
     }
 }
