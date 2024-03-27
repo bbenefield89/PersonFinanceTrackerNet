@@ -8,8 +8,9 @@ import { LandingPageComponent } from './views/landing-page/landing-page.componen
 import { SignupLoginPageComponent } from './views/signup-login-page/signup-login-page.component';
 import { NavBarComponent } from './globals/nav-bar/nav-bar.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SignupFormComponent } from './authentication/signup-form/signup-form.component';
-import { LoginFormComponent } from './authentication/login-form/login-form.component';
+import { SignupFormComponent } from './authentication/components/signup-form/signup-form.component';
+import { LoginFormComponent } from './authentication/components/login-form/login-form.component';
+import { DashboardPageComponent } from './views/dashboard-page/dashboard-page.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { LoginFormComponent } from './authentication/login-form/login-form.compo
         NavBarComponent,
         SignupFormComponent,
         LoginFormComponent,
+        DashboardPageComponent,
     ],
     imports: [
         BrowserModule, HttpClientModule,
