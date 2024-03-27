@@ -8,7 +8,11 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class LoginFormComponent {
     @Output() toggleForms = new EventEmitter<void>()
 
-    handleLoginButtonClick() {
+    public handleLoginButtonClick() {
+        console.log("Form submitted")
+    }
+
+    public handleSignupButtonClick() {
         this.toggleForms.emit()
     }
 }

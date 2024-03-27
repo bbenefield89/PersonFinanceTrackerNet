@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserRegistrationService } from '../../services/user-registration/user-registration.service';
 import { Router } from '@angular/router';
 import { JwtService } from '../../services/jwt/jwt.service';
+import { of } from 'rxjs';
 
 type SubmitSignupFormResponse = {
     token: string;
