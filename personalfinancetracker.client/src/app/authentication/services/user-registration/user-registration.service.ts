@@ -5,11 +5,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UserRegistrationService {
-    private apiUrl = "https://localhost:7178/api/users/register"
+    private _apiUrl = "https://localhost:7178/api/users/register"
 
   constructor(private http: HttpClient) { }
 
     public registerUser(userData: any) {
-        return this.http.post(this.apiUrl, userData);
+        return this.http.post(this._apiUrl, userData);
+    }
+
+    public get apiUrl() {
+        return this._apiUrl
     }
 }
