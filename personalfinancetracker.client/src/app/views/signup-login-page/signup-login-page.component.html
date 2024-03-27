@@ -2,5 +2,5 @@
     <app-signup-form *ngIf="showSignupForm" (toggleForms)="toggleForms()"></app-signup-form>
     <app-login-form *ngIf="!showSignupForm" (toggleForms)="toggleForms()"></app-login-form>
 
-    <app-error-toast *ngIf="!showErrorToast"></app-error-toast>
+    <app-error-toast *ngIf="showErrorToast"></app-error-toast>
 </div>

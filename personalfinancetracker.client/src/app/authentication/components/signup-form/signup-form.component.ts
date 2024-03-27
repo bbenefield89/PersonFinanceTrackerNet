@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { UserRegistrationService } from '../../services/user-registration/user-registration.service';
 import { Router } from '@angular/router';
+import { JwtService } from '../../services/jwt/jwt.service';
 
 type SubmitSignupFormResponse = {
     token: string;
@@ -18,11 +19,12 @@ export class SignupFormComponent {
     public signupForm: FormGroup;
 
     constructor(
-        private formBuilder: FormBuilder,
-        private userRegistrationService: UserRegistrationService,
-        private router: Router)
+        private _formBuilder: FormBuilder,
+        private _router: Router,
+        private _jwtService: JwtService,
+        private _userRegistrationService: UserRegistrationService)
     {
-        this.signupForm = formBuilder.group({
+        this.signupForm = this._formBuilder.group({
             username: "",
             email: "",
             password: "",
@@ -30,7 +32,7 @@ export class SignupFormComponent {
     }
 
     public submitSignupForm() {
-        this.userRegistrationService
+        this._userRegistrationService
             .registerUser(this.signupForm.value)
             .subscribe({
                 error: console.error,
@@ -39,9 +41,8 @@ export class SignupFormComponent {
     }
 
     public submitSignupFormNext({ token }: SubmitSignupFormResponse) {
-        // save token in a global place
-        // navigate to /dashboard
-        this.router.navigateByUrl("/dashboard")
+        this._jwtService.token = token
+        this._router.navigateByUrl("/dashboard")
     }
 
     public handleLoginButtonClick() {
