@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using PersonalFinanceTracker.Auth.Entities;
 using PersonalFinanceTracker.Auth.Models.InputModels;
+using PersonalFinanceTracker.Auth.Services;
 
 namespace PersonalFinanceTracker.Auth.Controllers
 {
@@ -10,10 +11,14 @@ namespace PersonalFinanceTracker.Auth.Controllers
     public class AccountCreationController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
+        private readonly JwtService _jwtService;
 
-        public AccountCreationController(UserManager<User> userManager)
+        public AccountCreationController(
+            UserManager<User> userManager,
+            JwtService jwtService)
         {
             _userManager = userManager;
+            _jwtService = jwtService;
         }
 
         [HttpPost("register")]
@@ -43,11 +48,20 @@ namespace PersonalFinanceTracker.Auth.Controllers
                 return Ok(new {
                     Statuts = "Error",
                     Errors = errors,
-                    Message = "User creation failed" 
+                    Message = "User creation failed"
                 });
             }
 
-            return Ok(new { Status = "Success", Message = "User created successfully" });
+            var createdUser = await _userManager.FindByNameAsync(model.Username);
+            var token = _jwtService.GenerateJwtToken(createdUser);
+
+            return StatusCode(
+                StatusCodes.Status201Created, 
+                new
+                {
+                    Token = token,
+                    Message = "Success"
+                });
         }
     }
 }
