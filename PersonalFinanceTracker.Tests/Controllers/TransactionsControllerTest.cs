@@ -1,10 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
-using PersonalFinanceTracker.Server.Controllers;
-using PersonalFinanceTracker.Server.Entities;
-using PersonalFinanceTracker.Server.Services;
+using PersonalFinanceTracker.TransactionsRestApi.Entities;
+using PersonalFinanceTracker.TransactionsRestApi.Services;
 
-namespace PersonalFinanceTracker.Tests
+namespace PersonalFinanceTracker.TransactionsRestApi.Tests.Controllers
 {
     public class TransactionsControllerTest
     {

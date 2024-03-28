@@ -1,4 +1,4 @@
-﻿namespace PersonalFinanceTracker.Server.Entities
+﻿namespace PersonalFinanceTracker.TransactionsRestApi.Entities
 {
     public class Transaction
     {

@@ -1,10 +1,10 @@
 ﻿using Moq;
 using Moq.EntityFrameworkCore;
-using PersonalFinanceTracker.Server.Data;
-using PersonalFinanceTracker.Server.Entities;
-using PersonalFinanceTracker.Server.Services;
+using PersonalFinanceTracker.TransactionsRestApi.Data;
+using PersonalFinanceTracker.TransactionsRestApi.Entities;
+using PersonalFinanceTracker.TransactionsRestApi.Services;
 
-namespace PersonalFinanceTracker.Tests
+namespace PersonalFinanceTracker.TransactionsRestApi.Tests.Services
 {
     public class TransactionsServiceTest
     {

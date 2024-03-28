@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PersonalFinanceTracker.Server.Entities;
+using PersonalFinanceTracker.TransactionsRestApi.Entities;
 
-namespace PersonalFinanceTracker.Server.Data.Repositories
+namespace PersonalFinanceTracker.TransactionsRestApi.Data.Repositories
 {
     public class InMemDbTransactionRepository : ITransactionRepository
     {

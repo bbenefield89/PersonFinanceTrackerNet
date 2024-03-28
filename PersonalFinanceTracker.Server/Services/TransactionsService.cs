@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PersonalFinanceTracker.Server.Data;
-using PersonalFinanceTracker.Server.Entities;
+using PersonalFinanceTracker.TransactionsRestApi.Data;
+using PersonalFinanceTracker.TransactionsRestApi.Entities;
 
-namespace PersonalFinanceTracker.Server.Services
+namespace PersonalFinanceTracker.TransactionsRestApi.Services
 {
     public class TransactionsService : ITransactionsService
     {

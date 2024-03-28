@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PersonalFinanceTracker.Server\PersonalFinanceTracker.Server.csproj" />
+    <ProjectReference Include="..\PersonalFinanceTracker.Server\PersonalFinanceTracker.TransactionsRestApi.csproj" />
   </ItemGroup>
 
   <ItemGroup>

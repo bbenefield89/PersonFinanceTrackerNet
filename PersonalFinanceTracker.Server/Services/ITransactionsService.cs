@@ -1,6 +1,6 @@
-﻿using PersonalFinanceTracker.Server.Entities;
+﻿using PersonalFinanceTracker.TransactionsRestApi.Entities;
 
-namespace PersonalFinanceTracker.Server.Services
+namespace PersonalFinanceTracker.TransactionsRestApi.Services
 {
     public interface ITransactionsService
     {

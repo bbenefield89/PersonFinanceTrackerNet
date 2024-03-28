@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PersonalFinanceTracker.Server.Entities;
+using PersonalFinanceTracker.TransactionsRestApi.Entities;
 
-namespace PersonalFinanceTracker.Server.Data
+namespace PersonalFinanceTracker.TransactionsRestApi.Data
 {
     public class InMemDbContext : DbContext
     {
