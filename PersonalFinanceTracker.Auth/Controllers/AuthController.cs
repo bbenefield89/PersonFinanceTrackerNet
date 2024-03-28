@@ -11,12 +11,11 @@ namespace PersonalFinanceTracker.Auth.Controllers
     public class AuthController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
-        private readonly JwtService _jwtService;
+        private readonly IJwtService _jwtService;
 
         public AuthController(
             UserManager<User> userManager,
-            IConfiguration configuration,
-            JwtService jwtService)
+            IJwtService jwtService)
         {
             _userManager = userManager;
             _jwtService = jwtService;
