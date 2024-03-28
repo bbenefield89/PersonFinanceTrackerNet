@@ -21,7 +21,7 @@ namespace PersonalFinanceTracker.Auth
                 .AddEntityFrameworkStores<InMemDbContext>()
                 .AddDefaultTokenProviders();
 
-            builder.Services.AddScoped<JwtService>();
+            builder.Services.AddScoped<IJwtService, JwtService>();
 
             // Add Contexts
             builder.Services.AddDbContext<InMemDbContext>(opts =>

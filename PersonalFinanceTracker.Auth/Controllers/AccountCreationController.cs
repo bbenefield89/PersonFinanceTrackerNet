@@ -11,25 +11,25 @@ namespace PersonalFinanceTracker.Auth.Controllers
     public class AccountCreationController : ControllerBase
     {
         private readonly UserManager<User> _userManager;
-        private readonly JwtService _jwtService;
+        private readonly IJwtService _jwtService;
 
         public AccountCreationController(
             UserManager<User> userManager,
-            JwtService jwtService)
+            IJwtService jwtService)
         {
             _userManager = userManager;
             _jwtService = jwtService;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> RegisterUser([FromBody] RegisterModel model)
         {
             var userExists = await _userManager.FindByNameAsync(model.Username);
 
             if (userExists != null)
             {
                 return StatusCode(
-                    StatusCodes.Status500InternalServerError,
+                    StatusCodes.Status409Conflict,
                     new { Status = "Error", Message = "User already exists" });
             }
 
@@ -45,8 +45,8 @@ namespace PersonalFinanceTracker.Auth.Controllers
             if (!result.Succeeded)
             {
                 var errors = result.Errors.Select(x => x.Description);
-                return Ok(new {
-                    Statuts = "Error",
+                return BadRequest(new {
+                    Status = "Error",
                     Errors = errors,
                     Message = "User creation failed"
                 });

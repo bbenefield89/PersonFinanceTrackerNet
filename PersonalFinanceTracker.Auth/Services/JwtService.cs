@@ -6,9 +6,13 @@ using System.Text;
 
 namespace PersonalFinanceTracker.Auth.Services
 {
-    public class JwtService
+    public class JwtService : IJwtService
     {
         private readonly IConfiguration _configuration;
+
+        public JwtService()
+        {
+        }
 
         public JwtService(IConfiguration configuration)
         {
