@@ -30,13 +30,14 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Controllers
         {
             var user = new UserEntity
             {
-                Id = User.FindFirstValue(ClaimTypes.NameIdentifier)!,
-                UserName = User.FindFirstValue(ClaimTypes.Name)!,
-                Email = User.FindFirstValue(ClaimTypes.Email)!,
+                Id = User.FindFirstValue(ClaimTypes.NameIdentifier),
+                UserName = User.FindFirstValue(ClaimTypes.Name),
+                Email = User.FindFirstValue(ClaimTypes.Email),
+                Transactions = new List<TransactionEntity>(),
             };
 
             var existingUser = await _usersService.GetByIdAsync(user.Id);
-            if (existingUser != null)
+            if (existingUser.Success)
             {
                 return Conflict(new
                 {
@@ -45,24 +46,20 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Controllers
                 });
             }
 
-            var createUserResp = await _usersService.CreateAsync(user);
-            var isUserCreated = createUserResp > 0;
-
-            if (!isUserCreated)
+            var createUserResponse = await _usersService.CreateAsync(user);
+            if (!createUserResponse.Success)
             {
                 return BadRequest(new
                 {
                     Status = "Error",
-                    Message = "Failed to create new user"
+                    createUserResponse.Message,
                 });
             }
 
-            var createdUser = await _usersService.GetByUserNameAsync(user.UserName);
-
             return CreatedAtAction(
                 nameof(GetById),
-                new { id = createdUser!.Id },
-                createdUser);
+                new { id = createUserResponse.Data.Id },
+                createUserResponse.Data);
         }
     }
 }

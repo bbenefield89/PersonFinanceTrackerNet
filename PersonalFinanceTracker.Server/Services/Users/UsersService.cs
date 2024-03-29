@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PersonalFinanceTracker.TransactionsRestApi.Data;
 using PersonalFinanceTracker.TransactionsRestApi.Entities;
-using PersonalFinanceTracker.TransactionsRestApi.Models.InputModels;
+using PersonalFinanceTracker.TransactionsRestApi.Utilities;
 
 namespace PersonalFinanceTracker.TransactionsRestApi.Services.Users
 {
@@ -14,15 +14,18 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Services.Users
             _context = context;
         }
 
-        public async Task<UserEntity?> GetByIdAsync(string id)
+        public async Task<ControllerServiceResult<UserEntity>> GetByIdAsync(string id)
         {
             try
             {
-                return await _context.Users.FindAsync((UserEntity user) => user.Id == id);
+                var user = await _context.Users.FindAsync((UserEntity user) => user.Id == id);
+                return ControllerServiceResult<UserEntity>
+                    .FromSuccess(user);
             }
             catch (Exception)
             {
-                return null;
+                return ControllerServiceResult<UserEntity>
+                    .FromError("User could not be found");
             }
         }
 
@@ -41,16 +44,19 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Services.Users
             }
         }
 
-        public async Task<int> CreateAsync(UserEntity user)
+        public async Task<ControllerServiceResult<UserEntity>> CreateAsync(UserEntity user)
         {
             try
             {
                 await _context.Users.AddAsync(user);
-                return _context.SaveChanges();
+                await _context.SaveChangesAsync();
+                return ControllerServiceResult<UserEntity>
+                    .FromSuccess(user);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                return 0;
+                return ControllerServiceResult<UserEntity>
+                    .FromError("Could not create user at this time: " + e.ToString());
             }
         }
     }

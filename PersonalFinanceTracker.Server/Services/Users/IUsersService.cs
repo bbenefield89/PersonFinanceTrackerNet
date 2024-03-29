@@ -1,12 +1,12 @@
 ﻿using PersonalFinanceTracker.TransactionsRestApi.Entities;
-using PersonalFinanceTracker.TransactionsRestApi.Models.InputModels;
+using PersonalFinanceTracker.TransactionsRestApi.Utilities;
 
 namespace PersonalFinanceTracker.TransactionsRestApi.Services.Users
 {
     public interface IUsersService
     {
-        Task<UserEntity?> GetByIdAsync(string id);
+        Task<ControllerServiceResult<UserEntity>> GetByIdAsync(string id);
         Task<UserEntity?> GetByUserNameAsync(string userName);
-        Task<int> CreateAsync(UserEntity createUserModel);
+        Task<ControllerServiceResult<UserEntity>> CreateAsync(UserEntity createUserModel);
     }
 }
