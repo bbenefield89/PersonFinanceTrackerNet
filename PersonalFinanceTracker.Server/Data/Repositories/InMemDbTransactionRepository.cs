@@ -12,7 +12,7 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Data.Repositories
             _context = context;
         }
 
-        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        public async Task<IEnumerable<TransactionEntity>> GetAllAsync()
         {
             return await _context.Transactions.ToListAsync();
         }

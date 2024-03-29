@@ -4,7 +4,7 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Data.Repositories
 {
     public interface ITransactionRepository
     {
-        Task<IEnumerable<Transaction>> GetAllAsync();
+        Task<IEnumerable<TransactionEntity>> GetAllAsync();
 
         //Task<Transaction?> GetById(int id);
 

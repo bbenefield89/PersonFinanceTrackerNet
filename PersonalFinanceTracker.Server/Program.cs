@@ -1,7 +1,11 @@
 
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using PersonalFinanceTracker.TransactionsRestApi.Data;
-using PersonalFinanceTracker.TransactionsRestApi.Services;
+using PersonalFinanceTracker.TransactionsRestApi.Services.Transactions;
+using PersonalFinanceTracker.TransactionsRestApi.Services.Users;
+using System.Text;
 
 namespace PersonalFinanceTracker.TransactionsRestApi
 {
@@ -16,10 +20,31 @@ namespace PersonalFinanceTracker.TransactionsRestApi
 
             // Register Services
             builder.Services.AddScoped<ITransactionsService, TransactionsService>();
+            builder.Services.AddScoped<IUsersService, UsersService>();
 
             // Register Contexts
             builder.Services.AddDbContext<InMemDbContext>(opts =>
                 opts.UseInMemoryDatabase("InMemDbContext"));
+
+            // Register Route Authentication
+            builder.Services.AddAuthentication(opts =>
+            {
+                opts.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                opts.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+                .AddJwtBearer(opts =>
+                {
+                    var key = Encoding.ASCII.GetBytes(builder.Configuration["JWT:Secret"]);
+
+                    opts.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(key),
+                        ValidateIssuer = false,
+                        ValidateAudience = false,
+                        ClockSkew = TimeSpan.Zero,
+                    };
+                });
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

@@ -2,7 +2,7 @@
 using PersonalFinanceTracker.TransactionsRestApi.Data;
 using PersonalFinanceTracker.TransactionsRestApi.Entities;
 
-namespace PersonalFinanceTracker.TransactionsRestApi.Services
+namespace PersonalFinanceTracker.TransactionsRestApi.Services.Transactions
 {
     public class TransactionsService : ITransactionsService
     {
@@ -13,7 +13,7 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Services
             _context = context;
         }
 
-        public async Task<IEnumerable<Transaction>> GetAllAsync()
+        public async Task<IEnumerable<TransactionEntity>> GetAllAsync()
         {
             return await _context.Transactions.ToListAsync();
         }

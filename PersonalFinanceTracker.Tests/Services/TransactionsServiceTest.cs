@@ -11,10 +11,10 @@ namespace PersonalFinanceTracker.TransactionsRestApi.Tests.Services
         [Fact]
         public async void GetAllAsync_ShouldReturnAllTransactions()
         {
-            var transactions = new List<Transaction>
+            var transactions = new List<TransactionEntity>
             {
-                new Transaction { Id = 1, Date = DateTime.Now, Amount = 100, Type = "Type", Category = "Category" },
-                new Transaction { Id = 2, Date = DateTime.Now, Amount = 5000, Type = "Type", Category = "Category" }
+                new TransactionEntity { Id = 1, Date = DateTime.Now, Amount = 100, Type = "Type", Category = "Category" },
+                new TransactionEntity { Id = 2, Date = DateTime.Now, Amount = 5000, Type = "Type", Category = "Category" }
             };
 
             var mockContext = new Mock<InMemDbContext>();
