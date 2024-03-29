@@ -2,7 +2,7 @@
 using Moq.EntityFrameworkCore;
 using PersonalFinanceTracker.TransactionsRestApi.Data;
 using PersonalFinanceTracker.TransactionsRestApi.Entities;
-using PersonalFinanceTracker.TransactionsRestApi.Services;
+using PersonalFinanceTracker.TransactionsRestApi.Services.Transactions;
 
 namespace PersonalFinanceTracker.TransactionsRestApi.Tests.Services
 {
